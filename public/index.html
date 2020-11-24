@@ -34,8 +34,10 @@
 
         // .emit() se usa para enviar información al servidor
         socket.emit('enviarMensaje', {
-            usuario: 'Fernando',
+            user: 'Fernando',
             message: 'Hola mundo'
+        }, function(resp) {
+            console.log('Server response: ', resp);
         });
 
         // Listen information
