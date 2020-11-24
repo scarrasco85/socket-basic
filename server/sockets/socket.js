@@ -17,18 +17,22 @@ io.on('connection', (client) => {
     });
 
     // Escuchando 'enviarMensaje' del cliente
-    client.on('enviarMensaje', (message, callback) => {
-        console.log(message);
+    client.on('enviarMensaje', (data /*, callback*/ ) => {
 
-        if (message.user) {
-            callback({
-                resp: 'Todo salió bien'
-            });
-        } else {
-            callback({
-                resp: 'Algo salió mal'
-            });
-        }
+        console.log(data);
+
+        // Enviamos el mensaje recibido a todos los usuarios conectados ya que escuchan 'enviarMensaje'
+        client.broadcast.emit('enviarMensaje', data);
+
+        // if (message.user) {
+        //     callback({
+        //         resp: 'Todo salió bien'
+        //     });
+        // } else {
+        //     callback({
+        //         resp: 'Algo salió mal'
+        //     });
+        // }
 
     });
 
