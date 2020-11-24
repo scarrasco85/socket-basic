@@ -19,7 +19,12 @@ app.use(express.static(publicPath));
 
 // Inicializar socket.io. IO = esta es la comunicación del backend
 let io = socketIO(server);
+// Cada vez que se produce una conexión al servidor de un nuevo cliente. El objeto 'client' tiene toda la 
+// información de la conexión y del pc que se conectó
+io.on('connection', (client) => {
 
+    console.log('Usuario conectado');
+});
 
 
 server.listen(port, (err) => {
