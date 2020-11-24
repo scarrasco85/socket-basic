@@ -1,8 +1,13 @@
-# Notas:
+# Socket basic ready to start a project
 
-Este es un pequeño servidor de express listo para ejecutarse y servir la carpeta public en la web.
+## Notes:
 
-Recuerden que deben de reconstruir los módulos de node con el comando
+Note:
+-server-client communication
+-client-server communication
+-client-clients communication
+
+Remember that you must rebuild the node modules with the command
 
 ```
 npm install
