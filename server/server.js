@@ -1,15 +1,14 @@
 const express = require('express');
 const socketIO = require('socket.io');
-// socket.io no trabaja por defecto con express para montar el servidor, sino que trabaja con el módulo que 
-// viene por defecto en nodeJS 'http'. Aquí vamos a montar un servidor Socket usando 'Express'.
+
+// socket.io working with 'http' by default
 const http = require('http');
 
 const path = require('path');
 
 const app = express();
-// Express está basado en 'http', tras las cortinas usa funciones de 'http', por eso mismo mandando la configuración
-// de express en http va a funcionar para levantar el servidor
-// Mounting socket server
+
+// Mounting socket server with Express configuration
 let server = http.createServer(app);
 
 const publicPath = path.resolve(__dirname, '../public');
@@ -17,10 +16,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
-// Inicializar socket.io. IO = esta es la comunicación del backend y exportarla para usarla en el archivo sockets.js
-// Para separar la lógica
+// Inicializate socket.io
 module.exports.io = socketIO(server);
-// Hay que importar la lógica del socket
+
+// Socket logic
 require('./sockets/socket');
 
 server.listen(port, (err) => {
